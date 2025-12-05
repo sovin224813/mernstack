@@ -1,0 +1,112 @@
+/* style.css */
+
+/* General page background */
+body {
+  background: #f8f9fa;
+}
+
+/* Navbar customization */
+.navbar {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Fixed height for card, flex layout for consistent height */
+.card {
+  transition: box-shadow 0.3s, transform 0.3s;
+  border-radius: 12px;
+  height: 400px; /* Fixed height for uniform cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Fixed height for images, cover scaling */
+.card-img-top {
+  height: 250px; /* Fixed image height */
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  transition: transform 0.4s;
+}
+
+/* Card body takes remaining space */
+.card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Image hover effect remains */
+.card-img-top:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* Card hover effect */
+.card:hover {
+  box-shadow: 0 8px 24px rgba(55,85,135,0.09);
+  transform: scale(1.04);
+  cursor: pointer;
+}
+
+/* Buttons extra effect */
+.btn {
+  transition: background 0.25s, color 0.25s, box-shadow 0.3s;
+  border-radius: 6px;
+}
+
+.btn:hover {
+  background: #5a189a;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(90,24,154,0.15);
+}
+
+/* Featured heading style */
+h1, h2 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #6c2eb6;
+  margin-bottom: 0.5em;
+}
+
+/* Fine tune art descriptions */
+p, li {
+  font-size: 1.08em;
+  color: #444;
+}
+
+/* Gallery section */
+.gallery-row {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+}
+
+/* Add subtle fade-in animation for art display/cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card, .img-fluid {
+  animation: fadeInUp 0.8s ease 0.1s both;
+}
+
+/* Responsive placeholder */
+@media (max-width: 767px) {
+  .gallery-row {
+    gap: 1em;
+  }
+  h1, h2 {
+    font-size: 2em;
+  }
+}
