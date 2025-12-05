@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Registration</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 40px;
+      background-color: #f4f6f8;
+    }
+
+    h2, h3 {
+      color: #333;
+    }
+
+    .form-container {
+      border: 1px solid #ddd;
+      padding: 25px;
+      width: 450px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group span {
+      display: inline-block;
+      width: 110px;
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select {
+      width: 270px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    input[type="submit"] {
+      padding: 8px 18px;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    table, th, td {
+      border: 1px solid #aaa;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #e9ecef;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Student Registration Form</h2>
+
+  <div class="form-container">
+    <form id="registrationForm">
+      <div class="form-group">
+        <span>Name:</span>
+        <input type="text" name="name" required>
+      </div>
+      <div class="form-group">
+        <span>Email:</span>
+        <input type="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <span>Gender:</span>
+        <select name="gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <span>Branch:</span>
+        <select name="branch">
+          <option value="CSE">CSE</option>
+          <option value="ECE">ECE</option>
+          <option value="EEE">EEE</option>
+          <option value="ME">BT</option>
+          <option value="CE">CE</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Register">
+      </div>
+    </form>
+  </div>
+
+  <h3>Registered Students</h3>
+  <table id="studentTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Branch</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Shayen Thomas</td>
+        <td>shayen@example.com</td>
+        <td>Male</td>
+        <td>CSE</td>
+      </tr>
+      <tr>
+        <td>Priya Nair</td>
+        <td>priya@example.com</td>
+        <td>Female</td>
+        <td>ECE</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    const form = document.getElementById("registrationForm");
+    const table = document.getElementById("studentTable").getElementsByTagName("tbody")[0];
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevent form reload
+
+      const name = form.elements["name"].value.trim();
+      const email = form.elements["email"].value.trim();
+      const gender = form.elements["gender"].value;
+      const branch = form.elements["branch"].value;
+
+      if (!name || !email) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      const newRow = table.insertRow();
+      newRow.innerHTML = `
+        <td>${name}</td>
+        <td>${email}</td>
+        <td>${gender}</td>
+        <td>${branch}</td>
+      `;
+
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
